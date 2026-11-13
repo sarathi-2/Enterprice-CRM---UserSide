@@ -1,0 +1,8 @@
+import {ReactNode} from "react";import {ArrowUpRight,MoreHorizontal} from "lucide-react";
+export function PageHeader({eyebrow,title,desc,action}:{eyebrow?:string;title:string;desc?:string;action?:ReactNode}){return <div className="page-header"><div>{eyebrow&&<div className="eyebrow">{eyebrow}</div>}<h1>{title}</h1>{desc&&<p>{desc}</p>}</div>{action&&<div className="header-action">{action}</div>}</div>}
+export function Button({children,onClick,secondary=false}:{children:ReactNode;onClick?:()=>void;secondary?:boolean}){return <button onClick={onClick} className={`btn ${secondary?"btn-secondary":""}`}>{children}</button>}
+export function Panel({title,sub,children,extra}:{title:string;sub?:string;children:ReactNode;extra?:ReactNode}){return <section className="panel"><div className="panel-head"><div><h3>{title}</h3>{sub&&<p>{sub}</p>}</div>{extra||<button className="dots"><MoreHorizontal size={19}/></button>}</div>{children}</section>}
+export function Status({children}:{children:string}){return <span className={`status status-${children.toLowerCase().replaceAll(" ","-")}`}>{children}</span>}
+export function Avatar({name}:{name:string}){return <span className="avatar small-avatar">{name.split(" ").map(x=>x[0]).join("").slice(0,2)}</span>}
+export function Metric({label,value,change,icon:Icon,tone="purple"}:{label:string;value:string;change:string;icon:any;tone?:string}){return <div className="metric-card"><div className="metric-top"><span>{label}</span><i className={`metric-icon ${tone}`}><Icon size={18}/></i></div><div className="metric-value">{value}</div><div className="metric-foot"><span className="trend">↗ {change}</span><span>vs last month</span></div></div>}
+export const Arrow=ArrowUpRight;
